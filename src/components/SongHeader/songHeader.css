@@ -1,0 +1,34 @@
+.song-header {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px;
+}
+.song-header-title {
+  font-size: 3em;
+  font-weight: bold;
+  color: black;
+}
+.song-header-img {
+  margin-top: 1rem;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 320px) {
+  .song-header {
+    margin: 12px;
+  }
+  .song-header-title {
+    margin-left: -1rem;
+    font-size: 2em;
+  }
+  .song-header-img {
+    width: 2rem;
+    height: 1.5rem;
+    margin-top: 0.7rem;
+  }
+}
