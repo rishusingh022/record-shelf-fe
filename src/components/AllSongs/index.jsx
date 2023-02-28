@@ -5,7 +5,8 @@ import { default as SongCard } from '../SongCard';
 import props from 'prop-types';
 let title = 'all songs';
 import imgPath from '../../assets/icon-genre.svg';
-
+import { makeRequest } from '../../utils/makeRequest';
+import { GET_SONGS_DATA, PATCH_SONG_DATA } from '../../constant/apiEndPoints';
 function AllSongs(props) {
   return (
     <div className="main-body">

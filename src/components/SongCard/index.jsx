@@ -21,6 +21,7 @@ function SongCard(props) {
     if (!isLiked) {
       setCount(count + 1);
     }
+    console.log(props.songData);
   };
   React.useEffect(() => {
     const fetchSongData = async () => {
@@ -60,4 +61,5 @@ export default SongCard;
 SongCard.propTypes = {
   imgData: PropTypes.object,
   color: PropTypes.bool,
+  songData: PropTypes.object,
 };
