@@ -3,12 +3,18 @@ import './songCard.css';
 import PropTypes from 'prop-types';
 import imgGreyHeart from '../../assets/heart-gray.svg';
 import imgRedHeart from '../../assets/heart-red.svg';
-import { mockGetSongsData, mockGetLikeData } from '../../mocks/mockSongData';
+import { makeRequest } from '../../utils/makeRequest';
+import { GET_SONGS_DATA, PATCH_SONG_DATA } from '../../constant/apiEndPoints';
 function SongCard(props) {
   const [isLiked, setIsLiked] = React.useState(false);
   const [count, setCount] = React.useState(6);
   const handleLike = () => {
     setIsLiked(!isLiked);
+    makeRequest(PATCH_SONG_DATA(props.imgData.id), {
+      data: {
+        like: !isLiked,
+      },
+    });
     if (isLiked) {
       setCount(count - 1);
     }
@@ -16,6 +22,16 @@ function SongCard(props) {
       setCount(count + 1);
     }
   };
+  React.useEffect(() => {
+    const fetchSongData = async () => {
+      const songData = await makeRequest(GET_SONGS_DATA(props.imgData.id));
+      if (songData) {
+        setIsLiked(songData.data.like);
+        setCount(songData.data.count);
+      }
+    };
+    fetchSongData();
+  }, []);
   return (
     // apply styles to the card
     <div
